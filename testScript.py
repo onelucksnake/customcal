@@ -12,6 +12,7 @@ print("--")
 # print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 
 # Example = calcore.calendar(country="china")
+# Example = calcore.calendar(country="chinaExt", yearRange=2024)
 # Example = calcore.calendar(country="empty")
 Example = calcore.calendar(country="example")
 # Example = calcore.calendar(country="usefunc")

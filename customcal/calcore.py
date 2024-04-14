@@ -158,8 +158,10 @@ class calendar:
         return datels
 
     def _calendarScope(self, sc) -> list:
-        if sc is None or isinstance(sc, int):
+        if sc is None:
             calS = [self._calcToday().year]
+        elif isinstance(sc, int):
+            calS = [sc]
         elif isinstance(sc, tuple) and sc[0] < sc[1]:
             calS = list(range(sc[0], sc[1] + 1))
         else:
@@ -317,6 +319,10 @@ class calendar:
         self.UTCMode = args.get("UTCMode", getattr(mod, 'UTCMode', [False, 0]))
         self.weekends = args.get("weekends", getattr(mod, 'weekends', [6, 7]))
         self._yearRange = (args.get("yearRange", getattr(mod, 'yearRange', None)),)
+
+        modOptions = [self.UTCMode, self.weekends, self._yearRange[0]]
+        if hasattr(mod, 'modDataUpdate'):
+            mod.modDataUpdate(modOptions)
 
         self.festivalsData = {}
         self.holidaysData = {}
